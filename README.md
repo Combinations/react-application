@@ -8,16 +8,16 @@ Follow the below steps to run the application.
 
 ## Setup
 
-Run 
+Navigate to /src/services and modify BASE_URL to be the url of the backend server. (ie. localhost:8090) 
+
+install application dependencies: 
 
 >yarn install 
 
-Navigate to /src/services and modify BASE_URL to be the url of the backend server. (ie. localhost:8090)
-
 ## Run the application
 
-To start the application run: 
+To start the application: 
 
 >yarn start
 
-Navigate to localhost:3000 
+To confirm, navigate to localhost:3000
