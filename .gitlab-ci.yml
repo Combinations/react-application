@@ -31,6 +31,6 @@ build:
 deploy:
   stage: deploy
   script: 
-    - eb init venture1-frontend -r us-west-2 -p docker-17.09.1-ce
+    - eb use venture1-frontend
     - eb deploy -l $CI_COMMIT_SHA 
 
