@@ -31,6 +31,5 @@ build:
 deploy:
   stage: deploy
   script: 
-    - eb init venture1-frontend --profile Venture1Frontend-env 
-    - eb deploy -l $CI_COMMIT_SHA 
+    - aws elasticbeanstalk update-environment --environment-name  Venture1Frontend-env --region us-west-2
 
