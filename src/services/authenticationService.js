@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://6300694e.ngrok.io';
+const BASE_URL = 'http://127.0.0.1:8090';
 
 export {signUp, login, signOut, passwordReset, passwordChange, isAuthed};
 

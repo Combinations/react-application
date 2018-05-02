@@ -1,0 +1,14 @@
+version: '2.1'
+
+services:
+  app:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      - NODE_ENV=development
