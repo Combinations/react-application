@@ -10,7 +10,7 @@ import withAgeAuthorization from './withAgeAuthorization';
 const SignInPage = ({ history }) =>
   <div>
     <div className="jc-center valign-wrapper">
-        <h1>Sign in</h1>
+        <h1>SIGN IN</h1>
     </div>
     <SignInForm history={history} />
     <PasswordForgetLink />
