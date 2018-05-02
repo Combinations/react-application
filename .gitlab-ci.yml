@@ -31,6 +31,6 @@ build:
 deploy:
   stage: deploy
   script: 
-    - eb use venture1-frontend
+    - eb init venture1-frontend --profile Venture1Frontend-env 
     - eb deploy -l $CI_COMMIT_SHA 
 
