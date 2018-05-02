@@ -10,7 +10,7 @@ COPY package*.json ./
 
 #For dev: RUN npm install
 #For prod: RUN npm install --only=production
-RUN npm install
+RUN yarn install
 
 #bundle application source
 COPY . .
