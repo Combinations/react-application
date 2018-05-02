@@ -31,5 +31,6 @@ build:
 deploy:
   stage: deploy
   script: 
+    - eb init -a venture1-frontend ----access-key-id $AWS_ACCESS_KEY_ID --secret-key $AWS_SECRET_ACCESS_KEY
     - eb deploy -l $CI_COMMIT_SHA 
 
