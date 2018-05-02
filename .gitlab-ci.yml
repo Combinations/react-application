@@ -31,5 +31,5 @@ build:
 deploy:
   stage: deploy
   script: 
-    - aws elasticbeanstalk update-environment --environment-name  Venture1Frontend-env --region us-west-2
+    - aws elasticbeanstalk update-application --application-name  venture1-frontend --region us-west-2
 
