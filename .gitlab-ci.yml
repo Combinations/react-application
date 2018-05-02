@@ -26,11 +26,11 @@ build:
     - docker push $CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
     - docker push $CONTAINER_IMAGE_URL:latest
   only:
-    - master
+    - dev
 
 deploy:
   stage: deploy
   script: 
-    - eb init venture1-frontend 
+    - eb init venture1-frontend -r us-west-2 -p docker-17.09.1-ce
     - eb deploy -l $CI_COMMIT_SHA 
 
