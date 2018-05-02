@@ -29,5 +29,5 @@ build:
 deploy:
   stage: deploy
   script: 
-    - aws eb deploy venture1-frontend --version $CI_COMMIT_SHA --region us-west-2
+    - aws elasticbeanstalk deploy venture1-frontend --version $CI_COMMIT_SHA --region us-west-2
 
