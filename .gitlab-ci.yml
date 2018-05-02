@@ -29,5 +29,5 @@ build:
 deploy:
   stage: deploy
   script: 
-    - aws elasticbeanstalk update-environment --application-name venture1-frontend --environment-name Venture1Frontend-env --version-label $CI_COMMIT_SHA
+    - aws elasticbeanstalk update-environment --application-name venture1-frontend --environment-name Venture1Frontend-env --version-label $CI_COMMIT_SHA --region us-west-2
 
