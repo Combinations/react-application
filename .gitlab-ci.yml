@@ -31,6 +31,6 @@ build:
 deploy:
   stage: deploy
   script: 
-    - aws elasticbeanstalk create-application-version --application-name venture1-frontend --version-label "test" --source-bundle S3Bucket="elasticbeanstalk-us-west-2-971053300417",S3Key="2018122oap-dockerrun.aws.json " --region us-west-2
-    - aws elasticbeanstalk update-application-version --application-name  venture1-frontend --version-label "test" --region us-west-2
+    - aws elasticbeanstalk create-application-version --application-name venture1-frontend --version-label "test2" --source-bundle S3Bucket="elasticbeanstalk-us-west-2-971053300417",S3Key="2018122oap-dockerrun.aws.json " --region us-west-2
+    - aws elasticbeanstalk update-application-version --application-name  venture1-frontend --version-label "test2" --region us-west-2
 
