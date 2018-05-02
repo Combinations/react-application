@@ -1,0 +1,27 @@
+#https://docs.gitlab.com/ee/ci/docker/using_docker_build.html for more information on how gitlab ci/cd works. 
+
+image: docker:stable
+# When using dind, it's wise to use the overlayfs driver for
+# improved performance.
+variables:
+  DOCKER_DRIVER: overlay2
+  CONTAINER_IMAGE_URL: 971053300417.dkr.ecr.us-west-2.amazonaws.com/venture1-frontend
+
+services:
+- docker:dind
+
+before_script:
+- docker info
+- apk add --no-cache curl jq python py-pip #install aws cli
+- pip install awscli 
+
+build:
+  stage: build
+  script:
+    - $(aws ecr get-login --no-include-email --region us-west-2) #log in to aws
+    - docker pull $CONTAINER_IMAGE_URL:latest || true
+    - docker build -f docker/Dockerfile --cache-from $CONTAINER_IMAGE:latest -t $CONTAINER_IMAGE_URL:$CI_COMMIT_SHA -t $CONTAINER_IMAGE_URL:latest .
+    - docker push $CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
+    - docker push $CONTAINER_IMAGE_URL:latest
+  only:
+    - master
