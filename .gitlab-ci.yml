@@ -14,6 +14,8 @@ before_script:
 - docker info
 - apk add --no-cache curl jq python py-pip #install aws cli
 - pip install awscli 
+- pip install awsebcli --upgrade --user
+- eb --version
 - $(aws ecr get-login --no-include-email --region us-west-2) #log in to aws
 
 build:
@@ -29,5 +31,5 @@ build:
 deploy:
   stage: deploy
   script: 
-    - aws elasticbeanstalk deploy venture1-frontend --version $CI_COMMIT_SHA --region us-west-2
+    - aws eb deploy venture1-frontend --version $CI_COMMIT_SHA --region us-west-2
 
