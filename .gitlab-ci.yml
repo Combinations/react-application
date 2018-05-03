@@ -24,7 +24,7 @@ build:
     - docker push $CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
     - docker push $CONTAINER_IMAGE_URL:latest
   only:
-    - dev
+    - master
 
 deploy:
   stage: deploy
