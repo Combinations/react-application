@@ -11,6 +11,10 @@
     ],
     "environment": [
       {
+        "name": "NODE_ENV",
+        "value": "development" 
+      },
+      {
         "name": "REACT_APP_BACKEND_URL",
         "value": "http://127.0.0.1:8090"
       }

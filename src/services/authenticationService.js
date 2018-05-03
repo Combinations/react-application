@@ -6,6 +6,9 @@ export {signUp, login, signOut, passwordReset, passwordChange, isAuthed};
 
 function signUp(data) {
     const url = `${BASE_URL}/user/create`;
+    console.log("------------")
+    console.log(url)
+    console.log("------------")
     return new Promise((resolve, reject) => {
         axios.post(url , data, {withCredentials: true}).then((response) => 
         {
