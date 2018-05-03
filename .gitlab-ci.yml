@@ -14,8 +14,6 @@ before_script:
 - docker info
 - apk add --no-cache curl jq python py-pip #install aws cli
 - pip install awscli 
-- pip install awsebcli
-- eb --version
 - $(aws ecr get-login --no-include-email --region us-west-2) #log in to aws
 
 build:
