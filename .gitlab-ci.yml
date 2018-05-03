@@ -5,7 +5,7 @@ image: docker:stable
 # improved performance.
 variables:
   DOCKER_DRIVER: overlay2
-  CONTAINER_IMAGE_URL: 971053300417.dkr.ecr.us-west-2.amazonaws.com/venture1-frontend
+  STAGING_CONTAINER_IMAGE_URL: 971053300417.dkr.ecr.us-west-2.amazonaws.com/staging-venture1-frontend
 
 services:
 - docker:dind
@@ -19,16 +19,16 @@ before_script:
 build:
   stage: build
   script:
-    - docker pull $CONTAINER_IMAGE_URL:latest || true
-    - docker build -f docker/Dockerfile --cache-from $CONTAINER_IMAGE:latest -t $CONTAINER_IMAGE_URL:$CI_COMMIT_SHA -t $CONTAINER_IMAGE_URL:latest .
-    - docker push $CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
-    - docker push $CONTAINER_IMAGE_URL:latest
+    - docker pull $STAGING_CONTAINER_IMAGE_URL:latest || true
+    - docker build -f docker/Dockerfile --cache-from $CONTAINER_IMAGE:latest -t $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA -t $STAGING_CONTAINER_IMAGE_URL:latest .
+    - docker push $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
+    - docker push $STAGING_CONTAINER_IMAGE_URL:latest
   only:
     - master
 
 deploy:
   stage: deploy
   script: 
-    - aws elasticbeanstalk create-application-version --application-name staging-venture1-frontend --version-label $CI_COMMIT_SHA --source-bundle S3Bucket="elasticbeanstalk-us-west-2-971053300417",S3Key="2018122PEu-dockerrun.aws.json" --region us-west-2
+    - aws elasticbeanstalk create-application-version --application-name staging-venture1-frontend --version-label $CI_COMMIT_SHA --source-bundle S3Bucket="elasticbeanstalk-us-west-2-971053300417",S3Key="staging-dockerrun.aws.json" --region us-west-2
     - aws elasticbeanstalk update-environment --environment-name StagingVenture1Frontend-env-1 --version-label $CI_COMMIT_SHA --region us-west-2
 
