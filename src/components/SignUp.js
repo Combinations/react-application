@@ -17,7 +17,7 @@ import * as routes from '../constants/routes';
 const SignUpPage = ({ history }) =>
   <div>
     <div className="jc-center valign-wrapper">
-        <h1>Sign up</h1>
+        <h1>SIGN UP</h1>
     </div>
     <SignUpForm history={history} />
   </div>
