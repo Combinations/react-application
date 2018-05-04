@@ -7,7 +7,7 @@ export {signUp, login, signOut, passwordReset, passwordChange, isAuthed};
 function signUp(data) {
     const url = `${BASE_URL}/user/create`;
     return new Promise((resolve, reject) => {
-        axios.post(url , data).then((response) => 
+        axios.post(url , data, {withCredentials: true}).then((response) => 
         {
             localStorage.setItem("authed", "true")
             localStorage.setItem("sessionTimeout", response.data.sessionTimeout)
@@ -21,7 +21,7 @@ function signUp(data) {
 function login(em, pw) {
     const url = `${BASE_URL}/authentication/login`;
     return new Promise((resolve, reject) => {
-        axios.post(url , {email: em, password: pw}).then((response) => 
+        axios.post(url , {email: em, password: pw}, {withCredentials: true}).then((response) => 
         {
             localStorage.setItem("authed", "true")
             localStorage.setItem("sessionTimeout", response.data.sessionTimeout)
@@ -35,7 +35,7 @@ function login(em, pw) {
 function signOut() {
     const url = `${BASE_URL}/authentication/logout`;
     return new Promise((resolve, reject) => {
-        axios.get(url).then((response) => 
+        axios.get(url, {withCredentials: true}).then((response) => 
         {
             localStorage.setItem("authed", "false")
             localStorage.setItem("sessionTimeout", "0")
