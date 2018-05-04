@@ -10,8 +10,7 @@ function signUp(data) {
         const config = {
             headers: {
                 'content-type': 'application/json'
-            }, 
-            withCredentials: true
+            }
         }
         axios.post(url , data, config).then((response) => 
         {
