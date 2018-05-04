@@ -9,7 +9,7 @@ function signUp(data) {
     return new Promise((resolve, reject) => {
         const config = {
             headers: {
-                'content-type': 'multipart/form-data'
+                'content-type': 'application/json'
             }, 
             withCredentials: true
         }
