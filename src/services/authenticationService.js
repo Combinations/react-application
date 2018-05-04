@@ -7,7 +7,13 @@ export {signUp, login, signOut, passwordReset, passwordChange, isAuthed};
 function signUp(data) {
     const url = `${BASE_URL}/user/create`;
     return new Promise((resolve, reject) => {
-        axios.post(url , data, {withCredentials: true}).then((response) => 
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }, 
+            withCredentials: true
+        }
+        axios.post(url , data, config).then((response) => 
         {
             localStorage.setItem("authed", "true")
             localStorage.setItem("sessionTimeout", response.data.sessionTimeout)
