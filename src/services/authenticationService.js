@@ -7,11 +7,7 @@ export {signUp, login, signOut, passwordReset, passwordChange, isAuthed};
 function signUp(data) {
     const url = `${BASE_URL}/user/create`;
     return new Promise((resolve, reject) => {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
+        const config = { headers: { 'Content-Type': 'application/json' } };
         axios.post(url , data, config).then((response) => 
         {
             localStorage.setItem("authed", "true")
