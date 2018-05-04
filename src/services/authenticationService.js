@@ -9,7 +9,7 @@ function signUp(data) {
     return new Promise((resolve, reject) => {
         const config = {
             headers: {
-                'content-type': 'application/json'
+                'Content-Type': 'application/json'
             }
         }
         axios.post(url , data, config).then((response) => 
