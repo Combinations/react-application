@@ -8,6 +8,7 @@ import axios from 'axios';
 
 import {signUp, login} from '../services/authenticationService';
 import withAgeAuthorization from './withAgeAuthorization';
+import ErrorToast from './ErrorToast';
 import M from "materialize-css/dist/js/materialize.min.js";
 import "materialize-css/dist/css/materialize.min.css";
 
@@ -144,7 +145,7 @@ class SignUpForm extends Component {
                     <input value={passwordTwo} name="passwordTwo" onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))} type="password"/>
                     <label for="email">Confirm Password</label>
                 </div>
-                { error && <p>{error.message}</p> }
+                { error && <ErrorToast error={error} clearError={(error) => this.setState(byPropKey('error', error))} /> }
                 <div class="row col s12">
                     <button data-target="firstmodal" class="btn m-r-16 grey darken-3 modal-trigger">Government issued ID</button>
                  </div>
