@@ -13,6 +13,8 @@ import "materialize-css/dist/css/materialize.min.css";
 
 import * as routes from '../constants/routes';
 
+import Checkbox from './Checkbox';
+
 
 const SignUpPage = ({ history }) =>
   <div>
@@ -30,10 +32,13 @@ const INITIAL_STATE = {
     checkTerms: false,
     file1: '',
     file2: '',
-    reason1: false,
-    reason2: false,
-    reason3: false,
     error: null,
+    selectedCheckboxes: null,
+    symptomSelected: false,
+    symptoms: ['Seizure Disorders', 'Sleep Disorders', 'ADHA', 'AIDS/HIV', 'Anxiety/Stress Disorder', 'Arthritis', 'Asthma', 'Brain/Head Injury', 'Cancer Cerebral Palsy',
+    'Chemotherapy Treatment', 'Chronic Pain', 'Colitis', 'Crohn’s Desease', 'Chronic Migraines', 'Depression', 'Eating Disorders', 'Eczema', 'Emphysema', 'End of life/Palliative Care', 
+    'Epilepsy', 'Fibromyalgia', 'Glaucoma', 'Hepatitis C', 'Irritable Bowel Syndrome', 'Neuralgia', 'Paraplegia/Quadriplegia', 'Psoriasis', 'PTSD', 'Radiation Therapy','Parkinson’s Disease',
+    'Lyme Disease', 'Multiple Sclerosis', 'Spinal Cord Injury', 'Substance Addiction/Withdrawal', 'Muscular Dystrophy', 'Nausea']
 };
 
 const byPropKey = (propertyName, value) => () => ({
@@ -56,6 +61,8 @@ class SignUpForm extends Component {
 
     const elem3 = document.querySelector('.collapsible');
     const instance3 = M.Collapsible.init(elem3, {});
+
+    this.state.selectedCheckboxes = new Set();
   }
 
   onSubmit = (event) => {
@@ -67,9 +74,8 @@ class SignUpForm extends Component {
         checkTerms,
         file1,
         file2,
-        reason1,
-        reason2,
-        reason3
+        selectedCheckboxes,
+        symptomSelected
       } = this.state;
 
     const {
@@ -78,6 +84,12 @@ class SignUpForm extends Component {
 
     const form = event.target;
     const data = new FormData(form);
+
+    let selfDiagnoses = []
+    for(const checkbox of this.state.selectedCheckboxes) {
+        selfDiagnoses.push(checkbox);
+    }
+    data.append('selfDiagnoses', selfDiagnoses);
 
     signUp(data)
         .then(authUser => {
@@ -95,6 +107,24 @@ class SignUpForm extends Component {
     event.preventDefault();
   }
 
+  toggleCheckbox = label => {
+    if(this.state.selectedCheckboxes.has(label)) {
+        this.state.selectedCheckboxes.delete(label);
+    } else {
+        this.state.selectedCheckboxes.add(label);
+    }
+
+    this.state.selectedCheckboxes.size === 0 ? this.setState(byPropKey('symptomSelected', false)) : this.setState(byPropKey('symptomSelected', true))
+  }
+
+  createCheckbox = label => (
+      <Checkbox label={label} handleCheckboxChange={this.toggleCheckbox} key={label}/>
+  )
+
+  createCheckboxes = () => (
+      this.state.symptoms.map(this.createCheckbox)
+  )
+
   render() {
     const {
         username,
@@ -104,9 +134,7 @@ class SignUpForm extends Component {
         checkTerms,
         file1,
         file2,
-        reason1,
-        reason2,
-        reason3,
+        symptomSelected,
         error
     } = this.state;
 
@@ -117,13 +145,13 @@ class SignUpForm extends Component {
       username === '' ||
       checkTerms === false ||
       file1 === '' ||
-      (file2 === '' && (reason1 === false && reason2 === false && reason3 === false))
+      (file2 === '' && symptomSelected === false)
 
     const isFile1Selected = 
         file1 === ''
     
     const isSupportingDocumentCompleted = 
-        (file2 === '' && (reason1 === false && reason2 === false && reason3 === false))
+        (file2 === '' && symptomSelected === false)
 
     return (
         <div className="valign-wrapper jc-center">
@@ -203,25 +231,8 @@ class SignUpForm extends Component {
                             <li>
                             <div class="collapsible-header">Self Diagnoses</div>
                             <div class="collapsible-body">
-                                <span> Select all that apply </span>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="reason1" value={reason1} onChange={event => {this.setState(byPropKey('reason1', !this.state.reason1))}} />
-                                        <span>Reason 1</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="reason2" value={reason2} onChange={event => {this.setState(byPropKey('reason2', !this.state.reason2))}}/>
-                                        <span>Reason 2</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="reason3" value={reason3} onChange={event => {this.setState(byPropKey('reason3', !this.state.reason3))}}  />
-                                        <span>Reason 3</span>
-                                    </label>
-                                </p>
+                                <span> The following is a list of conditions which may be helped by medicinal cannabis. Please select all that apply. </span>
+                                {this.createCheckboxes()}
                             </div>
                             </li>
                         </ul>
