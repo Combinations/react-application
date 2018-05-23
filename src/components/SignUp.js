@@ -62,7 +62,7 @@ class SignUpForm extends Component {
 
   showTermsAndConditions(){ 
     const elem = document.getElementById('termAndconditionModal');
-    const instance =M.Modal.getInstance(elem, {});
+    const instance = M.Modal.getInstance(elem, {});
     instance.open();
   }
 
