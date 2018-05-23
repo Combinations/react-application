@@ -13,7 +13,6 @@ import "materialize-css/dist/css/materialize.min.css";
 
 import * as routes from '../constants/routes';
 
-
 const SignUpPage = ({ history }) =>
   <div>
     <div className="jc-center valign-wrapper">
@@ -56,12 +55,15 @@ class SignUpForm extends Component {
 
     const elem3 = document.querySelector('.collapsible');
     const instance3 = M.Collapsible.init(elem3, {});
+
+    const elem4 = document.getElementById('termAndconditionModal');
+    const instance4 = M.Modal.init(elem4, {});
   }
 
-  termFunction(){ 
-      const elem4 = document.getElementById('thirdmodal');
-      const instance4 = M.Modal.init(elem4, {});
-      instance4.open();
+  showTermsAndConditions(){ 
+    const elem = document.getElementById('termAndconditionModal');
+    const instance =M.Modal.getInstance(elem, {});
+      instance.open();
   }
 
   onSubmit = (event) => {
@@ -161,7 +163,7 @@ class SignUpForm extends Component {
                     <p>
                         <label>
                             <input type="checkbox" name="checkbox" value={checkTerms} onChange={event => {this.setState(byPropKey('checkTerms', !this.state.checkTerms))}}/>
-                                <span>I agree to the <a onClick={this.termFunction}>terms and conditions</a></span>
+                                <span>I agree to the <a onClick={this.showTermsAndConditions}>terms and conditions</a></span>
                         </label>
                     </p>
                 </div>
@@ -239,7 +241,8 @@ class SignUpForm extends Component {
                         </div>                       
                     </div>
                 </div>
-                <div id="thirdmodal" className="modal">
+
+                <div id="termAndconditionModal" className="modal">
                     <div class="modal-content">      
                         <button type="button" id="thirdmodal" class="modal-action modal-close btn m-r-16 grey darken-3" > x </button>               
                         <div className="jc-center valign-wrapper">
@@ -260,9 +263,9 @@ class SignUpForm extends Component {
                                Contrary to popular belief, Lorem Ipsum is not simply random text.
                                 It has roots in a piece of classical Latin literature from 45 BC,
                                  making it over 2000 years old. Richard McClintock, a Latin professor at
-                                  Hampden-Sydney College in Virginia, looked up one of the more obscure Latin
-                                   words, consectetur, from a Lorem Ipsum passage, and going through the cites
-                                    of the word in classical literature, discovered the undoubtable source. Lorem
+                                 Hampden-Sydney College in Virginia, looked up one of the more obscure Latin
+                                 words, consectetur, from a Lorem Ipsum passage, and going through the cites
+                                 of the word in classical literature, discovered the undoubtable source. Lorem
                                      Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
                                       (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise
                                        on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
