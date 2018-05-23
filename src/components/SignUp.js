@@ -56,7 +56,6 @@ class SignUpForm extends Component {
 
     const elem3 = document.querySelector('.collapsible');
     const instance3 = M.Collapsible.init(elem3, {});
-
   }
 
   termFunction(){ 
@@ -102,8 +101,6 @@ class SignUpForm extends Component {
     event.preventDefault();
   }
 
-
-  
   render() {
     const {
         username,
@@ -242,8 +239,6 @@ class SignUpForm extends Component {
                         </div>                       
                     </div>
                 </div>
-
-             
                 <div id="thirdmodal" className="modal">
                     <div class="modal-content">      
                         <button type="button" id="thirdmodal" class="modal-action modal-close btn m-r-16 grey darken-3" > x </button>               
@@ -251,14 +246,17 @@ class SignUpForm extends Component {
                             <h3>Terms and Conditions </h3>
                         </div>
                         <div>
-                            <p> Lorem Ipsum has been the industry's standard dummy text ever 
+                            <p> 
+                                Lorem Ipsum has been the industry's standard dummy text ever 
                             since the 1500s, when an unknown printer took a galley of type and scrambled
                              it to make a type specimen book. It has survived not only five centuries, but 
                              also the leap into electronic typesetting, remaining essentially unchanged. It 
                              was popularised in the 1960s with the release of Letraset sheets containing
                               Lorem Ipsum passages, and more recently with desktop publishing software like
                                Aldus PageMaker including versions of Lorem Ipsum.
-                             Where does it come from?
+                            </p>
+                            <p>
+                                 Where does it come from?
                                Contrary to popular belief, Lorem Ipsum is not simply random text.
                                 It has roots in a piece of classical Latin literature from 45 BC,
                                  making it over 2000 years old. Richard McClintock, a Latin professor at
@@ -274,7 +272,9 @@ class SignUpForm extends Component {
                                       Bonorum et Malorum" by Cicero are also reproduced in their exact 
                                       original form, accompanied by English versions from the 1914 translation
                                        by H. Rackham.
-                           Where can I get some?
+                            </p>
+                            <p>
+                               Where can I get some?
                                        There are many variations of passages of Lorem Ipsum available,
                                         but the majority have suffered alteration in some form, by 
                                         injected humour, or randomised words which don't look even 
@@ -286,12 +286,11 @@ class SignUpForm extends Component {
                                          words, combined with a handful of model sentence structures, to 
                                          generate Lorem Ipsum which looks reasonable. The generated Lorem 
                                          Ipsum is therefore always free from repetition, injected humour, or 
-                                         sxnon-characteristic words etc.</p>
+                                         sxnon-characteristic words etc.
+                            </p>
                         </div>
                     </div>
                 </div>
-
-
                 <div className="row col s12">
                     <button class="btn m-r-16 grey darken-3" disabled={isInvalid} type="submit">
                         Sign up
