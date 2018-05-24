@@ -6,6 +6,7 @@ import {login} from '../services/authenticationService';
 import * as routes from '../constants/routes';
 import { PasswordForgetLink } from './PasswordForget';
 import withAgeAuthorization from './withAgeAuthorization';
+import ErrorToast from './ErrorToast';
 
 const SignInPage = ({ history }) =>
   <div>
@@ -77,7 +78,7 @@ class SignInForm extends Component {
                 <input value={password} type="password" onChange={event => this.setState(byPropKey('password', event.target.value))}/>
                 <label for="email">Password</label>
         </div>
-        { error && <p>{error.message}</p> }
+        { error && <ErrorToast error={error} clearError={(error) => this.setState(byPropKey('error', error))} />}
         <div className="row col s12">
             <button class="btn m-r-16 grey darken-3" disabled={isInvalid} type="submit">
             Sign in
