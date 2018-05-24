@@ -8,10 +8,11 @@ import axios from 'axios';
 
 import {signUp, login} from '../services/authenticationService';
 import withAgeAuthorization from './withAgeAuthorization';
+import ErrorToast from './ErrorToast';
 import M from "materialize-css/dist/js/materialize.min.js";
 import "materialize-css/dist/css/materialize.min.css";
-
 import * as routes from '../constants/routes';
+import Checkbox from './Checkbox';
 
 const SignUpPage = ({ history }) =>
   <div>
@@ -29,10 +30,13 @@ const INITIAL_STATE = {
     checkTerms: false,
     file1: '',
     file2: '',
-    reason1: false,
-    reason2: false,
-    reason3: false,
     error: null,
+    selectedCheckboxes: null,
+    symptomSelected: false,
+    symptoms: ['Seizure Disorders', 'Sleep Disorders', 'ADHA', 'AIDS/HIV', 'Anxiety/Stress Disorder', 'Arthritis', 'Asthma', 'Brain/Head Injury', 'Cancer Cerebral Palsy',
+    'Chemotherapy Treatment', 'Chronic Pain', 'Colitis', 'Crohn’s Desease', 'Chronic Migraines', 'Depression', 'Eating Disorders', 'Eczema', 'Emphysema', 'End of life/Palliative Care', 
+    'Epilepsy', 'Fibromyalgia', 'Glaucoma', 'Hepatitis C', 'Irritable Bowel Syndrome', 'Neuralgia', 'Paraplegia/Quadriplegia', 'Psoriasis', 'PTSD', 'Radiation Therapy','Parkinson’s Disease',
+    'Lyme Disease', 'Multiple Sclerosis', 'Spinal Cord Injury', 'Substance Addiction/Withdrawal', 'Muscular Dystrophy', 'Nausea']
 };
 
 const byPropKey = (propertyName, value) => () => ({
@@ -58,9 +62,11 @@ class SignUpForm extends Component {
 
     const elem4 = document.getElementById('termAndConditionModal');
     const instance4 = M.Modal.init(elem4, {});
+    
+    this.state.selectedCheckboxes = new Set();
   }
 
-  showTermsAndConditions(){ 
+  showTermsAndConditions() { 
     const elem = document.getElementById('termAndConditionModal');
     const instance = M.Modal.getInstance(elem, {});
     instance.open();
@@ -75,9 +81,8 @@ class SignUpForm extends Component {
         checkTerms,
         file1,
         file2,
-        reason1,
-        reason2,
-        reason3
+        selectedCheckboxes,
+        symptomSelected
       } = this.state;
 
     const {
@@ -86,6 +91,12 @@ class SignUpForm extends Component {
 
     const form = event.target;
     const data = new FormData(form);
+
+    let selfDiagnoses = []
+    for(const checkbox of this.state.selectedCheckboxes) {
+        selfDiagnoses.push(checkbox);
+    }
+    data.append('selfDiagnoses', selfDiagnoses);
 
     signUp(data)
         .then(authUser => {
@@ -103,6 +114,24 @@ class SignUpForm extends Component {
     event.preventDefault();
   }
 
+  toggleCheckbox = label => {
+    if(this.state.selectedCheckboxes.has(label)) {
+        this.state.selectedCheckboxes.delete(label);
+    } else {
+        this.state.selectedCheckboxes.add(label);
+    }
+
+    this.state.selectedCheckboxes.size === 0 ? this.setState(byPropKey('symptomSelected', false)) : this.setState(byPropKey('symptomSelected', true))
+  }
+
+  createCheckbox = label => (
+      <Checkbox label={label} handleCheckboxChange={this.toggleCheckbox} key={label}/>
+  )
+
+  createCheckboxes = () => (
+      this.state.symptoms.map(this.createCheckbox)
+  )
+
   render() {
     const {
         username,
@@ -112,9 +141,7 @@ class SignUpForm extends Component {
         checkTerms,
         file1,
         file2,
-        reason1,
-        reason2,
-        reason3,
+        symptomSelected,
         error
     } = this.state;
 
@@ -125,13 +152,13 @@ class SignUpForm extends Component {
       username === '' ||
       checkTerms === false ||
       file1 === '' ||
-      (file2 === '' && (reason1 === false && reason2 === false && reason3 === false))
+      (file2 === '' && symptomSelected === false)
 
     const isFile1Selected = 
         file1 === ''
     
     const isSupportingDocumentCompleted = 
-        (file2 === '' && (reason1 === false && reason2 === false && reason3 === false))
+        (file2 === '' && symptomSelected === false)
 
     return (
         <div className="valign-wrapper jc-center">
@@ -152,7 +179,7 @@ class SignUpForm extends Component {
                     <input value={passwordTwo} name="passwordTwo" onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))} type="password"/>
                     <label for="email">Confirm Password</label>
                 </div>
-                { error && <p>{error.message}</p> }
+                { error && <ErrorToast error={error} clearError={(error) => this.setState(byPropKey('error', error))} /> }
                 <div class="row col s12">
                     <button data-target="firstmodal" class="btn m-r-16 grey darken-3 modal-trigger">Government issued ID</button>
                  </div>
@@ -212,25 +239,8 @@ class SignUpForm extends Component {
                             <li>
                             <div class="collapsible-header">Self Diagnoses</div>
                             <div class="collapsible-body">
-                                <span> Select all that apply </span>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="reason1" value={reason1} onChange={event => {this.setState(byPropKey('reason1', !this.state.reason1))}} />
-                                        <span>Reason 1</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="reason2" value={reason2} onChange={event => {this.setState(byPropKey('reason2', !this.state.reason2))}}/>
-                                        <span>Reason 2</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="reason3" value={reason3} onChange={event => {this.setState(byPropKey('reason3', !this.state.reason3))}}  />
-                                        <span>Reason 3</span>
-                                    </label>
-                                </p>
+                                <span> The following is a list of conditions which may be helped by medicinal cannabis. Please select all that apply. </span>
+                                {this.createCheckboxes()}
                             </div>
                             </li>
                         </ul>
@@ -244,56 +254,51 @@ class SignUpForm extends Component {
 
                 <div id="termAndConditionModal" className="modal">
                     <div class="modal-content">      
-                        <button type="button" id="thirdmodal" class="modal-action modal-close btn m-r-16 grey darken-3" > x </button>               
-                            <div className="jc-center valign-wrapper">
-                                <h3>Terms and Conditions </h3>
-                            </div>
-                            <div>
-                                <p> 
-                                Lorem Ipsum has been the industry's standard dummy text ever 
-                            since the 1500s, when an unknown printer took a galley of type and scrambled
-                             it to make a type specimen book. It has survived not only five centuries, but 
-                             also the leap into electronic typesetting, remaining essentially unchanged. It 
-                             was popularised in the 1960s with the release of Letraset sheets containing
-                              Lorem Ipsum passages, and more recently with desktop publishing software like
-                               Aldus PageMaker including versions of Lorem Ipsum.
-                                </p>
-                                <p>
-                                 Where does it come from?
-                               Contrary to popular belief, Lorem Ipsum is not simply random text.
+                        <div className="jc-center valign-wrapper">
+                            <h3>Terms and Conditions </h3>
+                        </div>
+                        <div>
+                            <p> Lorem Ipsum has been the industry's standard dummy text ever 
+                                since the 1500s, when an unknown printer took a galley of type and scrambled
+                                it to make a type specimen book. It has survived not only five centuries, but 
+                                also the leap into electronic typesetting, remaining essentially unchanged. It 
+                                was popularised in the 1960s with the release of Letraset sheets containing
+                                Lorem Ipsum passages, and more recently with desktop publishing software like
+                                Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                            <p> Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text.
                                 It has roots in a piece of classical Latin literature from 45 BC,
-                                 making it over 2000 years old. Richard McClintock, a Latin professor at
-                                 Hampden-Sydney College in Virginia, looked up one of the more obscure Latin
-                                 words, consectetur, from a Lorem Ipsum passage, and going through the cites
-                                 of the word in classical literature, discovered the undoubtable source. Lorem
-                                     Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
-                                      (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise
-                                       on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum
-                                       "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below
-                                     for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus
-                                      Bonorum et Malorum" by Cicero are also reproduced in their exact 
-                                      original form, accompanied by English versions from the 1914 translatio
-                                      by H. Rackham.
-                                </p>
-                                <p>
-                                    Where can I get some?
-                                       There are many variations of passages of Lorem Ipsum available,
-                                        but the majority have suffered alteration in some form, by 
-                                        injected humour, or randomised words which don't look even 
-                                        slightly believable. If you are going to use a passage of Lorem Ipsum,
-                                         you need to be sure there isn't anything embarrassing hidden in the 
-                                         middle of text. All the Lorem Ipsum generators on the Internet tend 
-                                         to repeat predefined chunks as necessary, making this the first true 
-                                         generator on the Internet. It uses a dictionary of over 200 Latin 
-                                         words, combined with a handful of model sentence structures, to 
-                                         generate Lorem Ipsum which looks reasonable. The generated Lorem 
-                                         Ipsum is therefore always free from repetition, injected humour, or 
-                                         sxnon-characteristic words etc.
-                                </p>
-                            </div>
+                                making it over 2000 years old. Richard McClintock, a Latin professor at
+                                Hampden-Sydney College in Virginia, looked up one of the more obscure Latin
+                                words, consectetur, from a Lorem Ipsum passage, and going through the cites
+                                of the word in classical literature, discovered the undoubtable source. Lorem
+                                Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
+                                (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise
+                                on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum
+                                "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below
+                                for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus
+                                Bonorum et Malorum" by Cicero are also reproduced in their exact 
+                                original form, accompanied by English versions from the 1914 translatio
+                                by H. Rackham.
+                            </p>
+                            <p> Where can I get some?
+                                There are many variations of passages of Lorem Ipsum available,
+                                but the majority have suffered alteration in some form, by 
+                                injected humour, or randomised words which don't look even 
+                                slightly believable. If you are going to use a passage of Lorem Ipsum,
+                                you need to be sure there isn't anything embarrassing hidden in the 
+                                middle of text. All the Lorem Ipsum generators on the Internet tend 
+                                to repeat predefined chunks as necessary, making this the first true 
+                                generator on the Internet. It uses a dictionary of over 200 Latin 
+                                words, combined with a handful of model sentence structures, to 
+                                generate Lorem Ipsum which looks reasonable. The generated Lorem 
+                                Ipsum is therefore always free from repetition, injected humour, or 
+                                sxnon-characteristic words etc.
+                            </p>
                         </div>
                     </div>
+                </div>
                 <div className="row col s12">
                     <button class="btn m-r-16 grey darken-3" disabled={isInvalid} type="submit">
                         Sign up
