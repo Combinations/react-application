@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import withAgeAuthorization from './withAgeAuthorization';
 import M from "materialize-css/dist/js/materialize.min.js";
 import "materialize-css/dist/css/materialize.min.css";
+import LandingFooter from './LandingFooter';
 
 class LandingPage extends Component {
 
@@ -91,19 +92,8 @@ class LandingPage extends Component {
                 </div>
             </div>
           </section>
-
-          <section id="footer" className="grey darken-3">
-            <div className="container">
-                <div className="row">
-                <div className="col s3"></div>
-                <div className="col s6 center-align white-text">
-                © 2018 All Rights Reserved Terms of Use and Privacy Policy
-                </div>
-                <div className="col s3"></div>
-                </div>
-            </div>
-          </section>
-      </div>
+        <LandingFooter/>
+        </div>
       );
     }
   };
