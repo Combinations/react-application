@@ -55,9 +55,35 @@ class LandingPage extends Component {
                     <br/>
                     Order now and enjoy a truly superior experience
                 </p>
+            
+                <Link className="btn m-r-16 grey darken-3" to={routes.SIGN_UP}>Sign up</Link>
+                <Link className="btn m-r-16 grey darken-3" to={routes.SIGN_IN}>Sign in</Link>
+                </div>
+            </div>
+          </section>
 
-                <Link className="btn waves-light waves-effect m-r-16 grey darken-3" to={routes.SIGN_UP}>Sign up</Link>
-                <Link className="btn waves-light waves-effect m-r-16 grey darken-3" to={routes.SIGN_IN}>Sign in</Link>
+          <section className="grey lighten-3">
+            <div className="container">
+                <div className="col m6 center-align">
+                    <h2>How it works</h2>
+                </div>
+                <div className="row">
+                <div className="col m3">
+                    <h5><i className="material-icons">looks_one</i> Browse</h5>
+                    <p>Browse hundreds of flowers, strains, concentrates and accessories from our constantly evolving offerings.</p>
+                </div>
+                <div className="col m3">
+                    <h5><i className="material-icons">looks_two</i> Select</h5>
+                    <p>Select the items you want. Our intuitive user interface will guide you. It's simple, quick and easy!</p>
+                </div>
+                <div className="col m3">
+                    <h5><i className="material-icons">looks_3</i> Order</h5>
+                    <p>Order your selected items through our secure checkout. Our checkout system uses industry standard encryption HTTPS. </p>
+                </div>
+                <div className="col m3">
+                    <h5><i className="material-icons">looks_4</i> Track</h5>
+                    <p>Track your orders. We've built you an amazing tracker so that you'll be informed on the status of your order.</p>
+                </div>
                 </div>
             </div>
           </section>
@@ -67,7 +93,7 @@ class LandingPage extends Component {
                 <div className="row">
                 <div className="col m3"></div>
                 <div className="col m6 center-align">
-                    <h2>How we do it</h2>
+                    <h2>Our Approach</h2>
                     <p>By exploiting modern biology, chemistry, and software we are able to optimize the seed-to-patient process and deliever an unpreceedented patient experience.</p>
                 </div>
                 <div className="col m3"></div>
