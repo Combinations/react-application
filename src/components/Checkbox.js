@@ -1,5 +1,4 @@
-import React, {Component, PropTypes} from 'react';
-import M from "materialize-css/dist/js/materialize.min.js";
+import React, {Component} from 'react';
 import "materialize-css/dist/css/materialize.min.css";
 
 class Checkbox extends Component {

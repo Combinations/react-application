@@ -51,10 +51,10 @@ class PasswordForgetForm extends Component {
     return (
     <div className="valign-wrapper jc-center">
       <form onSubmit={this.onSubmit} className="container">
-        <div class="row input-field col s12">
+        <div className="row input-field col s12">
             <input value={this.state.email} onChange={event => this.setState(byPropKey('email', event.target.value))} type="text"/>
-            <label for="email">Email</label>
-            <button class="btn m-r-16 grey darken-3" disabled={isInvalid} type="submit">
+            <label htmlFor="email">Email</label>
+            <button className="btn m-r-16 grey darken-3" disabled={isInvalid} type="submit">
             Reset My Password
             </button>
 
