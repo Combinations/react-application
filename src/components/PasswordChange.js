@@ -47,16 +47,16 @@ class PasswordChangeForm extends Component {
     return (
     <div className="valign-wrapper jc-center">
       <form onSubmit={this.onSubmit} className="container">
-        <div class="input-field col s12">
+        <div className="input-field col s12">
             <input value={passwordOne} onChange={event => this.setState(byPropKey('passwordOne', event.target.value))} type="password"/>
-            <label for="passwordOne">New Password</label>
+            <label htmlFor="passwordOne">New Password</label>
         </div>
-        <div class="input-field col s12">
+        <div className="input-field col s12">
             <input value={passwordTwo} onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))} type="password"/>
-            <label for="passwordTwo">Confirm New Password</label>
+            <label htmlFor="passwordTwo">Confirm New Password</label>
         </div>
         <div className="row col s12">
-            <button class="btn m-r-16 grey darken-3" disabled={isInvalid} type="submit">
+            <button className="btn m-r-16 grey darken-3" disabled={isInvalid} type="submit">
             Change Password
             </button>
         </div>

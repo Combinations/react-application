@@ -20,26 +20,24 @@ class LandingPage extends Component {
   }
 
   confirmAge() {
-    console.log("in confirmed age")
     localStorage.setItem("confirmedAge", "true")
   }
 
   denyAge() {
-    console.log("deny age")
     localStorage.setItem("confirmedAge", "false")
   } 
 
   render() {
       return (
         <div>
-          <div id="modal1" class="modal">
-            <div class="modal-content">
+          <div id="modal1" className="modal">
+            <div className="modal-content">
               <h4>Age Confirmation</h4>
               <p>Are you over 19 years of age?</p>
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <Link className="modal-action modal-close waves-effect btn-flat" to={routes.AGE_RESTRICTION} onClick={this.denyAge}>No</Link>
-              <a href="#!" class="modal-action modal-close waves-effect btn-flat" onClick={this.confirmAge}>Yes</a>
+              <a href="#!" className="modal-action modal-close waves-effect btn-flat" onClick={this.confirmAge}>Yes</a>
             </div>
           </div>
           <section id="hero" style={{ backgroundImage:  'url(' + require('../img/meadow.jpg') + ')'}}>
@@ -120,13 +118,13 @@ class LandingPage extends Component {
           </section>
 
           <section className="bottom-signup grey lighten-3">
-            <div class="container center">
-                <div class="row center bottom-signup">
-                    <div class="col l6 s12 center">
+            <div className="container center">
+                <div className="row center bottom-signup">
+                    <div className="col l6 s12 center">
                         <h2> Ready to get started?</h2>
                         <p className="bottom-test"> Sign in to browse, or sign up to create an account </p>
                     </div>
-                    <div class="col l3 s12">
+                    <div className="col l3 s12">
                         <ul className="contact-footer">
                             <Link className="btn m-r-16 grey darken-3" to={routes.SIGN_UP}>Sign up</Link>
                             <Link className="btn m-r-16 grey darken-3" to={routes.SIGN_IN}>Sign in</Link>

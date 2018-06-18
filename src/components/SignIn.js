@@ -70,17 +70,17 @@ class SignInForm extends Component {
     return (
     <div className="valign-wrapper jc-center">
       <form onSubmit={this.onSubmit} className="container">
-        <div class="row input-field col s12">
+        <div className="row input-field col s12">
             <input value={email} type="text" onChange={event => this.setState(byPropKey('email', event.target.value))}/>
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
         </div>
-        <div class="input-field col s12">
+        <div className="input-field col s12">
                 <input value={password} type="password" onChange={event => this.setState(byPropKey('password', event.target.value))}/>
-                <label for="email">Password</label>
+                <label htmlFor="email">Password</label>
         </div>
         { error && <ErrorToast error={error} clearError={(error) => this.setState(byPropKey('error', error))} />}
         <div className="row col s12">
-            <button class="btn m-r-16 grey darken-3" disabled={isInvalid} type="submit">
+            <button className="btn m-r-16 grey darken-3" disabled={isInvalid} type="submit">
             Sign in
             </button>
         </div>

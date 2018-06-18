@@ -11,8 +11,8 @@ class SignOutButton extends Component {
 
     render() {
         return (
-           <div class="row col s12 container">
-                <button class="btn m-r-16 red darken-3" onClick={this.handleClick} label="Sign out">Sign out</button>
+           <div className="row col s12 container">
+                <button className="btn m-r-16 red darken-3" onClick={this.handleClick} label="Sign out">Sign out</button>
             </div>
         );
       }
