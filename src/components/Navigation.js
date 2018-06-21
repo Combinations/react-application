@@ -13,7 +13,7 @@ const NavigationNonAuth = () =>
     <nav className="grey darken-3">
       <div className="nav-wrapper">
         <a href="/" className="brand-logo left">Logo</a>
-        <a data-target="mobile-demo" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
+        <a href="#" data-target="mobile-demo" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
         <ul className="right hide-on-med-and-down">
           <li><Link to={routes.SIGN_UP}>SIGN UP</Link></li>
           <li><Link to={routes.SIGN_IN}>SIGN IN</Link></li>
