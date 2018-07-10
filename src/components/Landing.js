@@ -3,44 +3,17 @@ import '../styles/styles.css';
 import * as routes from '../constants/routes';
 import { Link } from 'react-router-dom';
 import withAgeAuthorization from './withAgeAuthorization';
-import M from "materialize-css/dist/js/materialize.min.js";
 import "materialize-css/dist/css/materialize.min.css";
 import LandingFooter from './LandingFooter';
+import AgeRestrictionAlert from './AgeRestrictionAlert';
 
 class LandingPage extends Component {
-
-	componentDidMount() {
-		const confirmedAge = localStorage.getItem('confirmedAge')
-		const isAuthed = localStorage.getItem('authed')
-		if(confirmedAge !== "true" && isAuthed !== "true") {
-			const elem = document.querySelector('.modal');
-			const instance = M.Modal.init(elem, {dismissible: false, endingTop: 40});
-			instance.open();
-		}
-	}
-
-	confirmAge() {
-		localStorage.setItem("confirmedAge", "true")
-	}
-
-	denyAge() {
-		localStorage.setItem("confirmedAge", "false")
-	}
 
 	render() {
 		return (
 			<div>
-				<div id="modal1" className="modal">
-					<div className="modal-content">
-						<h4>Age Confirmation</h4>
-						<p>Are you over 19 years of age?</p>
-					</div>
-					<div className="modal-footer">
-						<Link className="modal-action modal-close waves-effect btn-flat" to={routes.AGE_RESTRICTION} onClick={this.denyAge}>No</Link>
-						<a href="#!" className="modal-action modal-close waves-effect btn-flat" onClick={this.confirmAge}>Yes</a>
-					</div>
-				</div>
-
+				<AgeRestrictionAlert/>
+				
 				<section id="hero" style={{ backgroundImage:  'url(' + require('../img/meadow.jpg') + ')'}}>
 					<div className="container valign-wrapper jc-center">
 						<div className="valign center-align white-text">
@@ -85,7 +58,7 @@ class LandingPage extends Component {
 
 				<section>
 					<div className="container">
-						<div class="row">
+						<div className="row">
 							<div className="col m6 offset-m3 center">
 								<h2> Our Approach </h2>	
 								<p>By utilizing modern biology, chemistry, and software we are able to optimize the seed-to-patient process. This enables us to bring you extremely high-quality product at reasonable costs.</p>
