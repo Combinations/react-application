@@ -13,7 +13,7 @@ import PasswordForgetPage from './PasswordForget';
 import StorePage from './Store';
 import AccountPage from './Account';
 import TrackPage from './Track';
-import AgeRestrictionPage from './AgeRestriction'
+import AgeRestrictionPage from './AgeRestrictionPage'
 
 
 

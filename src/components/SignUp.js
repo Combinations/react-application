@@ -211,7 +211,7 @@ class SignUpForm extends Component {
                     <div className="modal-footer">
                         <div className="row col s12">
                             <button type="button" id="firstmodal" className="modal-action modal-close btn m-r-16 grey darken-3" disabled={isFile1Selected}> Continue </button>
-                        </div>                       
+                        </div>
                     </div>
                 </div>
 
