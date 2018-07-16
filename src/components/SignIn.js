@@ -45,12 +45,14 @@ class SignInForm extends Component {
       history,
     } = this.props;
 
-    login(email, password)
+    const credentials = {email: email, password: password}
+
+    login(credentials)
         .then(authUser => {
             this.setState(() => ({ ...INITIAL_STATE }));
             history.push(routes.STORE);
         }, (failure) => {
-            this.setState(byPropKey('error', failure.data))
+            this.setState(byPropKey('error', failure))
         })
 
     event.preventDefault();
