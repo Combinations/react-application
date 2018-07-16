@@ -1,49 +1,39 @@
-import axios from 'axios';
-
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 export {signUp, login, signOut, passwordReset, passwordChange, isAuthed};
 
-function signUp(data) {
+async function signUp(data) {
     const url = `${BASE_URL}/user/create`;
-    return new Promise((resolve, reject) => {
-        axios.post(url, data, {withCredentials: true}).then((response) => 
-        {
-            localStorage.setItem("authed", "true")
-            localStorage.setItem("sessionTimeout", response.data.sessionTimeout)
-            resolve(response)
-        }, (failure)=> {
-            reject(failure.response)
-        });
-    })
+    const response = await fetch(url, {method: 'POST', body: data})
+    const responseJSON = await response.json()
+    if (response.ok) {
+        return responseJSON
+    }
+    throw new Error(responseJSON.message)
 }
 
-function login(em, pw) {
+async function login(credentials) {
     const url = `${BASE_URL}/authentication/login`;
-    return new Promise((resolve, reject) => {
-        axios.post(url , {email: em, password: pw}, {withCredentials: true}).then((response) => 
-        {
-            localStorage.setItem("authed", "true")
-            localStorage.setItem("sessionTimeout", response.data.sessionTimeout)
-            resolve(response)
-        }, (failure)=> {
-            reject(failure.response)
-        });
-    })
+    const response = await fetch(url, {method: 'POST', headers: {'Accept': 'application/json',
+    'content-type': 'application/json'}, body: JSON.stringify(credentials)})
+    const responseJSON = await response.json()
+    if(response.ok) {
+        localStorage.setItem("authed", "true")
+        localStorage.setItem("sessionTimeout", responseJSON.sessionTimeout)
+        return responseJSON
+    }
+    throw new Error(responseJSON.message)
 }
 
-function signOut() {
+async function signOut() {
     const url = `${BASE_URL}/authentication/logout`;
-    return new Promise((resolve, reject) => {
-        axios.get(url, {withCredentials: true}).then((response) => 
-        {
-            localStorage.setItem("authed", "false")
-            localStorage.setItem("sessionTimeout", "0")
-            resolve(response)
-        }, (failure)=> {
-            reject(failure.response)
-        });
-    })
+    const response = await fetch(url, {method: 'GET'})
+    if (response.ok) {
+        localStorage.setItem("authed", "false")
+        localStorage.setItem("sessionTimeout", "0")
+        return response
+    }
+    throw new Error(response.message)
 }
 
 function passwordReset() {
@@ -55,10 +45,8 @@ function passwordChange() {
 }
 
 function isAuthed() {
-    //compare current time to timeout time, and state 
     if (Date.now() < localStorage.getItem("sessionTimeout")) {
         return true;
     } 
     return false;
-
 }

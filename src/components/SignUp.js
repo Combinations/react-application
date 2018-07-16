@@ -52,12 +52,8 @@ class SignUpForm extends Component {
   onSubmit = (event) => {
     
     const {
-        username,
         email,
         passwordOne,
-        checkTerms,
-        file1,
-        file2
       } = this.state;
 
     const {
@@ -66,18 +62,19 @@ class SignUpForm extends Component {
 
     const form = event.target;
     const data = new FormData(form);
+    const credentials = {email: email, password: passwordOne}
 
     signUp(data)
         .then(authUser => {
-            login(email, passwordOne)
+            login(credentials)
             .then(authUser => {
                 this.setState(() => ({ ...INITIAL_STATE }));
                 history.push(routes.STORE);
             }, (failure) => {
-                this.setState(byPropKey('error', failure.data))
+                this.setState(byPropKey('error', failure))
             })
         }, (failure) => {
-            this.setState(byPropKey('error', failure.data))
+            this.setState(byPropKey('error', failure))
         })  
 
     event.preventDefault();
