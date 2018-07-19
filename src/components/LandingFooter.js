@@ -8,7 +8,7 @@ class LandingFooter extends Component {
 
   render() {
     return (
-        <footer className="page-footer grey darken-3">
+        <footer data-testid='LandingFooter' className="page-footer grey darken-3">
           <div className="container">
                 <div className="row center social">
                     <div className="col s3"><Link to="https://Facebook.com" target="_blank"><i><img src={require('../img/facebook-box.png')} alt="facebook social link"/></i></Link></div>

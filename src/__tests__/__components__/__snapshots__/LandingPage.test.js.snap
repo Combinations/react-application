@@ -1,0 +1,366 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`always renders content 1`] = `
+<div>
+  <div
+    class="modal"
+    data-testid="AgeRestrictionAlert"
+    id="modal1"
+    tabindex="0"
+  >
+    <div
+      class="modal-content"
+    >
+      <h4>
+        Age Confirmation
+      </h4>
+      <p>
+        Are you over 19 years of age?
+      </p>
+    </div>
+    <div
+      class="modal-footer"
+    >
+      <a
+        class="modal-action modal-close waves-effect btn-flat"
+        href="/age-restriction"
+      >
+        No
+      </a>
+      <a
+        class="modal-action modal-close waves-effect btn-flat"
+        href="#!"
+      >
+        Yes
+      </a>
+    </div>
+  </div>
+  <section
+    data-testid="hero"
+    id="hero"
+    style="background-image: url(meadow.jpg);"
+  >
+    <div
+      class="container valign-wrapper jc-center"
+    >
+      <div
+        class="valign center-align white-text"
+      >
+        <p
+          class="flowtext hide-on-small-only"
+        >
+          The modern dispensary 
+        </p>
+        <h3>
+           Browse, Select, Order, Track, Enjoy 
+        </h3>
+        <p
+          class="big"
+        >
+          We produce your medicine using cutting edge biology, chemistry and software
+          <br />
+          Order now and enjoy a truly superior experience
+        </p>
+        <a
+          class="btn m-r-16 grey darken-3"
+          href="/signup"
+        >
+          Sign up
+        </a>
+        <a
+          class="btn m-r-16 grey darken-3"
+          href="/signin"
+        >
+          Sign in
+        </a>
+      </div>
+    </div>
+  </section>
+  <section
+    class="grey lighten-3"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="col m6 center-align"
+      >
+        <h2>
+          How it works
+        </h2>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="col m3"
+        >
+          <h5>
+            <i
+              class="material-icons"
+            >
+              looks_one
+            </i>
+             Browse
+          </h5>
+          <p>
+            Browse hundreds of flowers, strains, concentrates and accessories from our constantly evolving offerings.
+          </p>
+        </div>
+        <div
+          class="col m3"
+        >
+          <h5>
+            <i
+              class="material-icons"
+            >
+              looks_two
+            </i>
+             Select
+          </h5>
+          <p>
+            Select the items you want. Our intuitive user interface will guide you. It's simple, quick and easy.
+          </p>
+        </div>
+        <div
+          class="col m3"
+        >
+          <h5>
+            <i
+              class="material-icons"
+            >
+              looks_3
+            </i>
+             Order
+          </h5>
+          <p>
+            Order your selected items through our secure checkout. Our checkout system uses industry standard encryption (HTTPS). 
+          </p>
+        </div>
+        <div
+          class="col m3"
+        >
+          <h5>
+            <i
+              class="material-icons"
+            >
+              looks_4
+            </i>
+             Track
+          </h5>
+          <p>
+            Track your orders. We've built you an amazing tracker so that you'll be informed on the status of your order.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div
+      class="container"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col m6 offset-m3 center"
+        >
+          <h2>
+             Our Approach 
+          </h2>
+          <p>
+            By utilizing modern biology, chemistry, and software we are able to optimize the seed-to-patient process. This enables us to bring you extremely high-quality product at reasonable costs.
+          </p>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="col m3"
+        >
+          <h5>
+            <i
+              class="material-icons"
+            >
+              group
+            </i>
+             Team
+          </h5>
+          <p>
+            Our team consists of engineering, law, chemistry and botany professionals. We have experience in a range of industries. We are educated from academic insitutions from around the world. We work hard everyday in order to bring you high-quality medical grade cannabis.
+          </p>
+        </div>
+        <div
+          class="col m3"
+        >
+          <h5>
+            <i
+              class="material-icons"
+            >
+              account_balance
+            </i>
+             Facilities
+          </h5>
+          <p>
+            Our custom facilities have completely revolutionized the way natural medicinal cannabis is grown. Our facilities are built with a strong emphasis on automation. We use machine learning in order to care for each plant on an individual basis.
+          </p>
+        </div>
+        <div
+          class="col m3"
+        >
+          <h5>
+            <i
+              class="material-icons"
+            >
+              build
+            </i>
+             Online
+          </h5>
+          <p>
+            We are an online first dispensary. This allows us to avoid the costs of physical stores and to focus our efforts on improving the quality of our products and facilities.
+          </p>
+        </div>
+        <div
+          class="col m3"
+        >
+          <h5>
+            <i
+              class="material-icons"
+            >
+              mood
+            </i>
+             Partnerships
+          </h5>
+          <p>
+            We have great partnerships with government, academic insituitions, and hospitals. We are exicited to work with any organization that wishes to push forward the understanding of medicinal cannabis. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section
+    class="grey lighten-3"
+  >
+    <div
+      class="container valign-wrapper jc-center"
+    >
+      <div
+        class="valign center-align"
+      >
+        <h2>
+           Ready to get started? 
+        </h2>
+        <p
+          class="big"
+        >
+           Sign in to browse, or sign up to create an account 
+        </p>
+        <a
+          class="btn m-r-16 grey darken-3"
+          href="/signup"
+        >
+          Sign up
+        </a>
+        <a
+          class="btn m-r-16 grey darken-3"
+          href="/signin"
+        >
+          Sign in
+        </a>
+      </div>
+    </div>
+  </section>
+  <footer
+    class="page-footer grey darken-3"
+    data-testid="LandingFooter"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="row center social"
+      >
+        <div
+          class="col s3"
+        >
+          <a
+            href="/https://Facebook.com"
+            target="_blank"
+          >
+            <i>
+              <img
+                alt="facebook social link"
+                src="facebook-box.png"
+              />
+            </i>
+          </a>
+        </div>
+        <div
+          class="col s3"
+        >
+          <a
+            href="/https://Instagram.com"
+            target="_blank"
+          >
+            <i>
+              <img
+                alt="instagram social link"
+                src="instagram.png"
+              />
+            </i>
+          </a>
+        </div>
+        <div
+          class="col s3"
+        >
+          <a
+            href="/https://twitter.com"
+            target="_blank"
+          >
+            <i>
+              <img
+                alt="twitter social link"
+                src="twitter.png"
+              />
+            </i>
+          </a>
+        </div>
+        <div
+          class="col s3"
+        >
+          <a
+            href="/https://snapchat.com"
+            target="_blank"
+          >
+            <i>
+              <img
+                alt="snapchat social link"
+                src="snapchat.png"
+              />
+            </i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <section
+      class="grey darken-3"
+      id="footer"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col s12 center-align grey-text"
+          >
+            © 2018 All Rights Reserved Terms of Use and Privacy Policy
+          </div>
+        </div>
+      </div>
+    </section>
+  </footer>
+</div>
+`;

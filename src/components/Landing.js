@@ -13,8 +13,7 @@ class LandingPage extends Component {
 		return (
 			<div>
 				<AgeRestrictionAlert/>
-				
-				<section id="hero" style={{ backgroundImage:  'url(' + require('../img/meadow.jpg') + ')'}}>
+				<section id="hero"  data-testid="hero" style={{ backgroundImage:  'url(' + require('../img/meadow.jpg') + ')'}}>
 					<div className="container valign-wrapper jc-center">
 						<div className="valign center-align white-text">
 							<p className="flowtext hide-on-small-only">The modern dispensary </p>

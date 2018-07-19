@@ -12,7 +12,6 @@ class AgeConfirmationAlert extends Component {
 		if(confirmedAge !== "true" && isAuthed !== "true") {
 			const elem = document.querySelector('.modal');
 			const instance = M.Modal.init(elem, {dismissible: false, endingTop: 40});
-			instance.open();
 		}
 	}
 
@@ -26,7 +25,7 @@ class AgeConfirmationAlert extends Component {
 
     render() {
         return (
-        <div id="modal1" className="modal">
+        <div data-testid='AgeRestrictionAlert' id="modal1" className="modal">
             <div className="modal-content">
                 <h4>Age Confirmation</h4>
                 <p>Are you over 19 years of age?</p>
