@@ -28,8 +28,6 @@ build:
     - docker build -f docker/Dockerfile --cache-from $CONTAINER_IMAGE:latest -t $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA -t $STAGING_CONTAINER_IMAGE_URL:latest .
     - docker push $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
     - docker push $STAGING_CONTAINER_IMAGE_URL:latest
-  only:
-    - master
 
 test:
   stage: test
