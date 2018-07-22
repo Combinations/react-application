@@ -29,8 +29,8 @@ build:
 test:
   stage: test
   script:
-    npm install
-    npm test
+    - npm install
+    - npm test
 
 deploy:
   stage: deploy
