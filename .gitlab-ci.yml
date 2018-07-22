@@ -33,9 +33,9 @@ build:
 
 test:
   stage: test
-  image: node:carbon
   script:
-    - npm run test:ci
+    - docker run --rm $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
+    - docker exec -it $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA npm run test:ci
 
 deploy:
   stage: deploy
