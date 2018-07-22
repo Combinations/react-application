@@ -33,7 +33,7 @@ build:
 
 test:
   stage: test
-  image: $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
+  image: node:carbon
   script:
     - npm run test:ci
 
