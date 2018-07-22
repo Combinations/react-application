@@ -28,6 +28,7 @@ build:
 
 test:
   stage: test
+  image: node:carbon
   script:
     - npm install
     - npm test
