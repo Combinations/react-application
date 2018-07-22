@@ -34,7 +34,7 @@ build:
 test:
   stage: test
   script:
-    - docker images
+    - docker pull $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
     - docker run --rm $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
     - docker exec -it $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA npm run test:ci
 
