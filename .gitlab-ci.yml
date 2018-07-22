@@ -7,6 +7,11 @@ variables:
   DOCKER_DRIVER: overlay2
   STAGING_CONTAINER_IMAGE_URL: 971053300417.dkr.ecr.us-west-2.amazonaws.com/staging-venture1-frontend
 
+stages:
+  - build
+  - test
+  - deploy
+
 services:
 - docker:dind
 
@@ -28,10 +33,9 @@ build:
 
 test:
   stage: test
-  image: node:carbon
+  image: $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
   script:
-    - npm install
-    - npm test
+    - npm run test:ci
 
 deploy:
   stage: deploy
