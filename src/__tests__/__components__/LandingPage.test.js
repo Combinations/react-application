@@ -28,7 +28,6 @@ it('should render its children components', ()=> {
 it('should have a background image in the hero section', () => {
   const {getByTestId} = renderComponent()
   expect(getByTestId('hero')).toHaveStyle(`background-image: url(meadow.jpg)`)
-  expect(getByTestId('qweqwe')).toHaveStyle(`background-image: url(meadow.jpg)`)
 })
 
 it('should have two sign up buttons that link to the sign up page', () => {

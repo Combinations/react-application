@@ -1,26 +1,12 @@
-# Running the application for development
-
-This application is a react + materalizeCSS application
-
-see http://materializecss.com for more information on the ui kit. 
-
-Follow the below steps to run the application. 
-
-## Setup
-
-Navigate to /src/services and modify BASE_URL to be the url of the backend server. (ie. localhost:8090) 
-
-install application dependencies: 
-
->yarn install 
-
 ## Run the application
 
-To start the application: 
+Ensure that docker is installed. (https://docs.docker.com/install/)
 
->yarn start
+> docker-compose up --build (this will build the container and run it; it runs docker-compose build; docker-compose up)
 
-To confirm, navigate to localhost:3000
+read about docker-compose (https://docs.docker.com/compose/). Inspect our dockerfile in Docker/dockerfile and our docker-compose file in docker-compose.yaml. 
+
+To confirm that the application is running navigate to localhost:3000
 
 ## Tests
 
@@ -32,8 +18,16 @@ Because we have not ejected from create-react-app in order to add/use mocks duri
 
 To run the tests:
 
-> npm test 
+> yarn test (this will start the watcher by default)
 
 To get test coverage: 
 
-> npm test -- --coverage
+> yarn test -- --coverage
+
+## Deploy 
+
+The application is deployed via gitlab ci/cd + AWS's EB/ECR services. 
+
+Read about gitlab ci/cd (https://about.gitlab.com/features/gitlab-ci-cd/) and inspect .gitlab-ci.yml. 
+
+Read about AWS's EB service (https://aws.amazon.com/elasticbeanstalk/) and ECR (https://aws.amazon.com/ecr/)
