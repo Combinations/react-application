@@ -21,8 +21,8 @@ it('should render its children components', ()=> {
   const {getByTestId} = renderComponent()
 
   //assert that the two children components are in the dom
-  expect(getByTestId('AgeRestrictionAlert')).toBeInTheDOM()
-  expect(getByTestId('LandingFooter')).toBeInTheDOM()
+  expect(getByTestId('AgeRestrictionAlert')).toBeInTheDocument()
+  expect(getByTestId('LandingFooter')).toBeInTheDocument()
 })
 
 it('should have a background image in the hero section', () => {

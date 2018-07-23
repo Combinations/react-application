@@ -3,9 +3,9 @@
 exports[`always renders content 1`] = `
 <div>
   <div
-    class="modal"
     data-testid="AgeRestrictionAlert"
     id="modal1"
+    class="modal"
     tabindex="0"
   >
     <div
@@ -28,16 +28,16 @@ exports[`always renders content 1`] = `
         No
       </a>
       <a
-        class="modal-action modal-close waves-effect btn-flat"
         href="#!"
+        class="modal-action modal-close waves-effect btn-flat"
       >
         Yes
       </a>
     </div>
   </div>
   <section
-    data-testid="hero"
     id="hero"
+    data-testid="hero"
     style="background-image: url(meadow.jpg);"
   >
     <div
@@ -52,7 +52,7 @@ exports[`always renders content 1`] = `
           The modern dispensary 
         </p>
         <h3>
-           Browse, Select, Order, Track, Enjoy 
+          Browse, Select, Order, Track, Enjoy 
         </h3>
         <p
           class="big"
@@ -101,7 +101,7 @@ exports[`always renders content 1`] = `
             >
               looks_one
             </i>
-             Browse
+            Browse
           </h5>
           <p>
             Browse hundreds of flowers, strains, concentrates and accessories from our constantly evolving offerings.
@@ -116,7 +116,7 @@ exports[`always renders content 1`] = `
             >
               looks_two
             </i>
-             Select
+            Select
           </h5>
           <p>
             Select the items you want. Our intuitive user interface will guide you. It's simple, quick and easy.
@@ -131,7 +131,7 @@ exports[`always renders content 1`] = `
             >
               looks_3
             </i>
-             Order
+            Order
           </h5>
           <p>
             Order your selected items through our secure checkout. Our checkout system uses industry standard encryption (HTTPS). 
@@ -146,7 +146,7 @@ exports[`always renders content 1`] = `
             >
               looks_4
             </i>
-             Track
+            Track
           </h5>
           <p>
             Track your orders. We've built you an amazing tracker so that you'll be informed on the status of your order.
@@ -166,7 +166,7 @@ exports[`always renders content 1`] = `
           class="col m6 offset-m3 center"
         >
           <h2>
-             Our Approach 
+            Our Approach 
           </h2>
           <p>
             By utilizing modern biology, chemistry, and software we are able to optimize the seed-to-patient process. This enables us to bring you extremely high-quality product at reasonable costs.
@@ -185,7 +185,7 @@ exports[`always renders content 1`] = `
             >
               group
             </i>
-             Team
+            Team
           </h5>
           <p>
             Our team consists of engineering, law, chemistry and botany professionals. We have experience in a range of industries. We are educated from academic insitutions from around the world. We work hard everyday in order to bring you high-quality medical grade cannabis.
@@ -200,7 +200,7 @@ exports[`always renders content 1`] = `
             >
               account_balance
             </i>
-             Facilities
+            Facilities
           </h5>
           <p>
             Our custom facilities have completely revolutionized the way natural medicinal cannabis is grown. Our facilities are built with a strong emphasis on automation. We use machine learning in order to care for each plant on an individual basis.
@@ -215,7 +215,7 @@ exports[`always renders content 1`] = `
             >
               build
             </i>
-             Online
+            Online
           </h5>
           <p>
             We are an online first dispensary. This allows us to avoid the costs of physical stores and to focus our efforts on improving the quality of our products and facilities.
@@ -230,7 +230,7 @@ exports[`always renders content 1`] = `
             >
               mood
             </i>
-             Partnerships
+            Partnerships
           </h5>
           <p>
             We have great partnerships with government, academic insituitions, and hospitals. We are exicited to work with any organization that wishes to push forward the understanding of medicinal cannabis. 
@@ -249,12 +249,12 @@ exports[`always renders content 1`] = `
         class="valign center-align"
       >
         <h2>
-           Ready to get started? 
+          Ready to get started? 
         </h2>
         <p
           class="big"
         >
-           Sign in to browse, or sign up to create an account 
+          Sign in to browse, or sign up to create an account 
         </p>
         <a
           class="btn m-r-16 grey darken-3"
@@ -272,8 +272,8 @@ exports[`always renders content 1`] = `
     </div>
   </section>
   <footer
-    class="page-footer grey darken-3"
     data-testid="LandingFooter"
+    class="page-footer grey darken-3"
   >
     <div
       class="container"
@@ -285,13 +285,13 @@ exports[`always renders content 1`] = `
           class="col s3"
         >
           <a
+            target="_blank"
             href="/https://Facebook.com"
-            target="_blank"
           >
             <i>
               <img
-                alt="facebook social link"
                 src="facebook-box.png"
+                alt="facebook social link"
               />
             </i>
           </a>
@@ -300,13 +300,13 @@ exports[`always renders content 1`] = `
           class="col s3"
         >
           <a
+            target="_blank"
             href="/https://Instagram.com"
-            target="_blank"
           >
             <i>
               <img
-                alt="instagram social link"
                 src="instagram.png"
+                alt="instagram social link"
               />
             </i>
           </a>
@@ -315,13 +315,13 @@ exports[`always renders content 1`] = `
           class="col s3"
         >
           <a
+            target="_blank"
             href="/https://twitter.com"
-            target="_blank"
           >
             <i>
               <img
-                alt="twitter social link"
                 src="twitter.png"
+                alt="twitter social link"
               />
             </i>
           </a>
@@ -330,13 +330,13 @@ exports[`always renders content 1`] = `
           class="col s3"
         >
           <a
-            href="/https://snapchat.com"
             target="_blank"
+            href="/https://snapchat.com"
           >
             <i>
               <img
-                alt="snapchat social link"
                 src="snapchat.png"
+                alt="snapchat social link"
               />
             </i>
           </a>
@@ -344,8 +344,8 @@ exports[`always renders content 1`] = `
       </div>
     </div>
     <section
-      class="grey darken-3"
       id="footer"
+      class="grey darken-3"
     >
       <div
         class="container"
