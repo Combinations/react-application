@@ -33,7 +33,7 @@ test:
   stage: test
   script:
     - docker pull $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA
-    - docker run $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA npm run test:ci
+    - docker run $STAGING_CONTAINER_IMAGE_URL:$CI_COMMIT_SHA yarn run test:ci
 
 deploy:
   stage: deploy
