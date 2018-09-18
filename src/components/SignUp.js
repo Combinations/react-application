@@ -128,10 +128,10 @@ class SignUpForm extends Component {
                 </div>
                 { error && <ErrorToast error={error} clearError={(error) => this.setState(byPropKey('error', error))} /> }
                 <div className="row col s12">
-                    <button data-target="govID" className="btn m-r-16 grey darken-3 modal-trigger">Government issued ID</button>
+                    <button data-target="govID" className="btn m-r-16 grey darken-3 modal-trigger">Image 1</button>
                  </div>
                  <div className="row col s12"> 
-                    <button data-target="supportingDocumentation" className="btn m-r-16 grey darken-3 modal-trigger">Prescription/Dispensary Card</button>
+                    <button data-target="supportingDocumentation" className="btn m-r-16 grey darken-3 modal-trigger">Image 2</button>
                 </div>
                 <div>
                     <p>

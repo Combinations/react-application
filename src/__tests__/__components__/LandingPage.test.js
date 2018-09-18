@@ -27,7 +27,7 @@ it('should render its children components', ()=> {
 
 it('should have a background image in the hero section', () => {
   const {getByTestId} = renderComponent()
-  expect(getByTestId('hero')).toHaveStyle(`background-image: url(meadow.jpg)`)
+  expect(getByTestId('hero')).toHaveStyle(`background-image: url(background.jpg)`)
 })
 
 it('should have two sign up buttons that link to the sign up page', () => {
@@ -56,5 +56,5 @@ it('should have two sign in buttons that link to the sign in page', () => {
   //ensure that the buttons link to the correct page
   expect(signInButtons[0].href).toEqual(`${base_url}/signin`)
   expect(signInButtons[1].href).toEqual(`${base_url}/signin`)
-})
+}) 
 
