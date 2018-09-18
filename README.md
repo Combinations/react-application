@@ -1,6 +1,6 @@
 ## Run the application
 
-Ensure that docker is installed. (https://docs.docker.com/install/). Information on docker-compose can be found here (https://docs.docker.com/compose/)
+Ensure that docker is installed. (https://docs.docker.com/install/). Read about docker-compose here (https://docs.docker.com/compose/)
 
 > docker-compose up --build (this will build the container and run it; it runs docker-compose build; docker-compose up)
 
